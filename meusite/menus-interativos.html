@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu Interativos</title>
+    <style>
+    * {
+  padding: 0;
+  margin: 0;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #161616;
+}
+.menu {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu li {
+  position: absolute;
+  left: 0;
+  list-style: none;
+  transform: rotate(0deg) translateX(100px);
+  transform-origin: 130px;
+  transition: 0.5s;
+  transition-delay: calc(0.1s * var(--i));
+}
+.menu.active li {
+  transform: rotate(calc(360deg / 8 * var(--i)));
+}
+.menu a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  text-decoration: none;
+  font-size: 22px;
+  border-radius: 50%;
+  transform: rotate(calc(360deg / -8 * var(--i)));
+  transition: 1s;
+  color: transparent;
+  transition-delay: 0.5s;
+  filter: drop-shadow(0 0 2px var(--clr));
+}
+.menu.active a {
+  color: var(--clr);
+}
+.menu a::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--clr);
+  transform: rotate(calc(90deg * var(--i))) translate(0, 25px);
+  transition: width 0.5s, height 0.5s, transform 0.5s;
+  transition-delay: 0.5s, 1s, 1.5s;
+}
+.menu.active a::before {
+  width: 50px;
+  height: 50px;
+  background: #161616;
+  border: 2px solid var(--clr);
+  transform: rotate(calc(0 * var(--i)));
+  transition: transform 0.5s, height 0.5s, width 0.5s;
+  transition-delay: 0.5s, 1.5s, 1.5s;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 5px var(--clr));
+  rotate: 135deg;
+}
+.menu.active li:hover a::before {
+  background: var(--clr);
+}
+.menu.active li:hover a ion-icon {
+  color: #161616;
+}
+
+.menuToggle {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 32px;
+  transition: 1.5s;
+}
+.menu.active .menuToggle {
+  transform: rotate(315deg);
+}
+    </style>
+  </head>
+  <body>
+    <ul class="menu">
+      <div class="menuToggle"><ion-icon name="add-outline"></ion-icon></div>
+      <li style="--i: 0; --clr: #ff2972">
+        <a href="https://accounts.google.com/SignOutOptions?hl=pt-BR&continue=https://myaccount.google.com/%3Futm_source%3DOGB%26utm_medium%3Dapp%26pli%3D1&ec=GBRAwAE"><ion-icon name="mail-outline"></ion-icon></a>
+      </li>
+      <li style="--i: 1; --clr: #fee800">
+        <a href="https://www.instagram.com/viniciusferreiram92/"><ion-icon name="logo-instagram"></ion-icon></a>
+      </li>
+      <li style="--i: 2; --clr: #04fc43">
+        <a href="https://wa.me/qr/6IKXS2DIHZRIM1"><ion-icon name="logo-whatsapp"></ion-icon></a>
+      </li>
+      <li style="--i: 3; --clr: #fe00f1">
+        <a href="ww.linkedin.com/in/vinicius-monfardini-2b2b462b9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><ion-icon name="logo-linkedin"></ion-icon></a>
+      </li>https://w
+      <li style="--i: 4; --clr: #00b0fe">
+        <a href="https://www.facebook.com/profile.php?id=100088071187806&mibextid=ZbWKwL"><ion-icon name="logo-facebook"></ion-icon></a>
+      </li>
+      <li style="--i: 5; --clr: #fea600">
+        <a href="https://x.com/ViniciusMonfar3?t=fegJ1J3v4KcYgX5hH7BxMA&s=09"><ion-icon name="logo-twitter"></ion-icon></a>
+      </li>
+      <li style="--i: 6; --clr: #a529ff">
+        <a href="https://discord.com/invite/npB8tmQd"><ion-icon name="logo-discord"></ion-icon></a>
+      </li>
+      <li style="--i: 7; --clr: #01bdab">
+        <a href="https://youtube.com/@monfardiniclash6828?si=nHZdk1r0hLLdedvF"><ion-icon name="logo-youtube"></ion-icon></a>
+      </li>
+    </ul>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script>
+      let menuToggle = document.querySelector(".menuToggle");
+      let menu = document.querySelector(".menu");
+      menuToggle.onclick = function () {
+        menu.classList.toggle("active");
+      };
+    </script>
+  </body>
+</html>
